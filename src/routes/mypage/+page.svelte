@@ -75,6 +75,10 @@
 
   let awards = [''];
   let careers = [''];
+  let feSkills = [''];
+  let beSkills = [''];
+  let devOpsSkills = [''];
+  let certificates = [''];
   
   function clickToggle() {
     toggle = !toggle;
@@ -177,6 +181,99 @@
 
       </div>
       
+    </div>
+  </div>
+</div>
+
+<div class="skills">
+  <div class="skills-title">
+    <p>SKILLS</p>
+  </div>
+  <div class="main-line"></div>
+  <div class="skills-container">
+    <div class="skills-input">
+      <p style="font-size: larger; font-weight: bold;">FRONTEND</p>
+      {#each feSkills as feSkill, i (i)}
+        <input class="input-shape" placeholder="ex) html, css, js" bind:value={feSkills[i]} type="text">
+      {/each}
+      
+      <div class="plus-minus-icons">
+        <button class="minus-icon" on:click={()=>{
+          feSkills.pop();
+          feSkills = [...feSkills];
+        }}>
+          <i class="fa-regular fa-square-minus fa-3x" style="color: lightgrey;"></i>
+        </button>
+        <button class="plus-icon" on:click={()=>{
+          feSkills = [...feSkills, ''];
+        }}>
+          <i class="fa-regular fa-square-plus fa-3x" style="color: lightgrey;"></i>
+        </button>
+
+      </div>
+    </div>
+    <div class="skills-input">
+      <p style="font-size: larger; font-weight: bold;">BACKEND</p>
+      {#each beSkills as beSkill, i (i)}
+        <input class="input-shape" placeholder="ex) Spring, Nest" bind:value={beSkills[i]} type="text">
+      {/each}
+      
+      <div class="plus-minus-icons">
+        <button class="minus-icon" on:click={()=>{
+          beSkills.pop();
+          beSkills = [...beSkills];
+        }}>
+          <i class="fa-regular fa-square-minus fa-3x" style="color: lightgrey;"></i>
+        </button>
+        <button class="plus-icon" on:click={()=>{
+          beSkills = [...beSkills, ''];
+        }}>
+          <i class="fa-regular fa-square-plus fa-3x" style="color: lightgrey;"></i>
+        </button>
+
+      </div>
+    </div>
+    <div class="skills-input">
+      <p style="font-size: larger; font-weight: bold;">DEVOPS</p>
+      {#each devOpsSkills as devopsSkill, i (i)}
+        <input class="input-shape" placeholder="ex) Nginx, Tomcat" bind:value={devOpsSkills[i]} type="text">
+      {/each}
+      
+      <div class="plus-minus-icons">
+        <button class="minus-icon" on:click={()=>{
+          devOpsSkills.pop();
+          devOpsSkills = [...devOpsSkills];
+        }}>
+          <i class="fa-regular fa-square-minus fa-3x" style="color: lightgrey;"></i>
+        </button>
+        <button class="plus-icon" on:click={()=>{
+          devOpsSkills = [...devOpsSkills, ''];
+        }}>
+          <i class="fa-regular fa-square-plus fa-3x" style="color: lightgrey;"></i>
+        </button>
+
+      </div>
+    </div>
+    <div class="skills-input" style="border: none;">
+      <p style="font-size: larger; font-weight: bold;">CERTIFICATES</p>
+      {#each certificates as certificate, i (i)}
+        <input class="input-shape" placeholder="ex) 정보처리기사" bind:value={certificates[i]} type="text">
+      {/each}
+      
+      <div class="plus-minus-icons">
+        <button class="minus-icon" on:click={()=>{
+          certificates.pop();
+          certificates = [...certificates];
+        }}>
+          <i class="fa-regular fa-square-minus fa-3x" style="color: lightgrey;"></i>
+        </button>
+        <button class="plus-icon" on:click={()=>{
+          certificates = [...certificates, ''];
+        }}>
+          <i class="fa-regular fa-square-plus fa-3x" style="color: lightgrey;"></i>
+        </button>
+
+      </div>
     </div>
   </div>
 </div>
@@ -418,6 +515,39 @@
     border: none;
     background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
+  }
+
+  .skills {
+    height: 100vh;
+    background-color: rgb(89, 89, 89);
+    padding: 10px;
+    text-align: center;
+  }
+
+  .skills-title {
+    padding: 10px;
+    margin-top: 40px;
+    font-weight: 900;
+    font-size: 40px;
+    color: white;
+  }
+
+  .skills-container {
+    width: 80%;
+    height: 74%;
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    display: flex;
+  }
+
+  .skills-input {
+    height: 100%;
+    width: 25%;
+    padding: 10px;
+    border-right: 1px solid #eee;
   }
 
 
