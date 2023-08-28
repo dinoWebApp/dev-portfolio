@@ -1,5 +1,8 @@
-export const load= async (event) => {
-  return {
-    session: await event.locals.getSession(),
-  };
-};
+/** @type {import('./$types').LayoutServerLoad} */
+export async function load({ locals }) {
+  if(locals.user) {
+    return {
+      profile : locals.user
+    }
+  }
+}

@@ -7,6 +7,7 @@
 
   import { onMount } from "svelte";
   import { init, send } from 'emailjs-com'
+  import { goto } from "$app/navigation";
   init('FbgTsZ9mReHm6CCfe');
   onMount(()=>{
     let vh = window.innerHeight;
@@ -114,23 +115,29 @@
 
 <nav class="navbar" bind:this={navbar} class:navbar-trans={navbarTrans} class:toggle={toggle}>
   <div class="navbar-container" >
-    <div class="logo">
+    <button class="logo" on:click={()=>{
+      goto('/');
+    }}>
       <h1>Dev's Portfolio</h1>
-    </div>
+    </button>
     <div style="flex-grow: 1;"></div>
     <div class="menu">
-      <p class:menu-color={about} on:click={clickMenu(scrollAbout)}>About</p>
-      <p class:menu-color={services} on:click={clickMenu(scrollService)}>Services</p>
-      <p class:menu-color={contact} on:click={clickMenu(scrollContact)}>Contact</p>
-      <p>MyPage</p>
+      <button class:menu-color={about} on:click={clickMenu(scrollAbout)}>About</button>
+      <button class:menu-color={services} on:click={clickMenu(scrollService)}>Services</button>
+      <button class:menu-color={contact} on:click={clickMenu(scrollContact)}>Contact</button>
+      <button on:click={()=>{
+        goto('/mypage')
+      }}>MyPage</button>
     </div>
-    <div on:click={clickToggle} class="menu-bar"><i class="fa-solid fa-bars fa-2x"></i></div>
+    <button on:click={clickToggle} class="menu-bar"><i class="fa-solid fa-bars fa-2x"></i></button>
   </div>
   <div class="m-menu">
-    <p class:menu-color={about} on:click={clickMenu(scrollAbout)}>About</p>
-    <p class:menu-color={services} on:click={clickMenu(scrollService)}>Services</p>
-    <p class:menu-color={contact} on:click={clickMenu(scrollContact)}>Contact</p>
-    <p>MyPage</p>
+    <button class:menu-color={about} on:click={clickMenu(scrollAbout)}>About</button>
+    <button class:menu-color={services} on:click={clickMenu(scrollService)}>Services</button>
+    <button class:menu-color={contact} on:click={clickMenu(scrollContact)}>Contact</button>
+    <button on:click={()=>{
+      goto('mypage');
+    }}>MyPage</button>
   </div>
 </nav>
 
@@ -213,7 +220,9 @@
       </div>
     </div>
     <div class="service-btn">
-      <button class="btn-detail">시작하기</button>
+      <button class="btn-detail" on:click={()=>{
+        goto('/mypage');
+      }}>시작하기</button>
     </div>
   </div>
 </div>
@@ -262,7 +271,7 @@
   }
 
   .menu-color {
-    color: #F4623A;
+    color: #F4623A !important;
   }
   .navbar-container {
     display: flex;
@@ -275,6 +284,12 @@
     display: flex;
     align-items: center;
     margin-left: 40px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: inherit;
+    margin-left: 70px;
+    font-size: 16px;
   }
   .menu {
     display: flex;
@@ -288,26 +303,34 @@
     background-color: white;
   }
   
-  .m-menu p {
-    cursor: pointer;
-    font-size: larger;
-    font-weight: bold;
-    margin-left: 30px;
-  }
-
-  .menu p {
+  .menu button {
     cursor: pointer;
     width: 25%;
-    font-size: larger;
+    font-size: 17px;
     text-align: center;
     font-weight: bold;
+    border: none; 
+    background-color: rgba(0, 0, 0, 0);
+    color: inherit;
   }
 
-  .menu p:hover {
+  .menu button:hover {
     color: darkgrey;
   }
 
-  .m-menu p:hover {
+  .m-menu button {
+    cursor: pointer;
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    border: none; 
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 30px;
+    display:block;
+    margin-top: 20px;
+  }
+
+  .m-menu button:hover {
     color: darkgrey;
   }
 
@@ -322,6 +345,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
   }
 
   .toggle {
@@ -551,6 +575,10 @@
     input, textarea {
       width: 60%;
     }
+    .logo {
+      margin-left: 30px;
+      font-size: 15px;
+    }
   }
 
   
@@ -558,7 +586,7 @@
   
 
   @media screen and (max-width: 768px) {
-    .menu p {
+    .menu button {
       display:none;
     }
     .m-menu {

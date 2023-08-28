@@ -1,13 +1,24 @@
-// @ts-nocheck
-import { SvelteKitAuth } from "@auth/sveltekit";
-import GitHub from "@auth/core/providers/github";
-import Google from '@auth/core/providers/google'
-import { GITHUB_ID, GITHUB_SECRET, GOOGLE_ID, GOOGLE_SECRET } from "$env/static/private";
+import { pb } from '$lib/server/pocketbase';
 
-export const handle = SvelteKitAuth({
-  providers: [
-    GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET}),
-    Google({ clientId: GOOGLE_ID, clientSecret: GOOGLE_SECRET, redirectURL: 'http://localhost:5173/auth'}),
-  ],
-  secret : '616a8b3660c656a448f484c1856c473c'
-});
+/** @type {import('@sveltejs/kit').Handle} */
+export async function handle({ event, resolve }) {
+
+  //before response
+  event.locals.pb = pb;
+  event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
+
+  try {
+    event.locals.pb.authStore.isValid && (await event.locals.pb.collection('users').authRefresh());
+  } catch (error) {
+    event.locals.pb.authStore.clear();
+  }
+
+  event.locals.user = structuredClone(pb.authStore.model);
+
+  const response = await resolve(event);
+
+  //after response
+
+  response.headers.append('set-cookie', event.locals.pb.authStore.exportToCookie());
+  return response;
+}
