@@ -68,7 +68,8 @@
   let skills = false;
   let projects = false;
   let toggle = false;
-
+  let profileUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutMe.profileImage}`
+  let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutMe.archImg}`
   let clickMenu;
   let scrollAbout;
   let scrollSkills;
@@ -116,7 +117,11 @@
 <div class="aboutme-1">
   <div style="height: 10px;"></div>
   <div class="profile-container">
-    <img src="/image/profile.png" alt="profile">
+    {#if myData.aboutMe.profileImage}
+      <img src={profileUrl} alt="profile">
+    {:else}
+      <img src="/image/profile.png" alt="profile">
+    {/if}
   </div>
   <div class="aboutMe-pr">
     <h1>{myData.aboutMe.name}</h1>
@@ -351,7 +356,11 @@
       </div>
       <div class="project-info">
         <div class="arch-img">
-          <img src="/image/arch-img.jpeg" alt="">
+          {#if myData.projects.archImg}
+            <img src={archUrl} alt="">
+          {:else}
+            <img src="/image/arch-img.jpeg" alt="">
+          {/if}
         </div>
       </div>
       <div class="main-line" style="margin-top: 50px; margin-bottom: 50px"></div>

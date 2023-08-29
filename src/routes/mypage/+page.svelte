@@ -6,7 +6,7 @@
 // @ts-nocheck
   import { goto } from "$app/navigation";
   import axios from "axios";
-  import { PUBLIC_IMGHOSTING_URL } from "$env/static/public";
+  import { PUBLIC_IMGHOSTING_URL, PUBLIC_DOMAIN_URL } from "$env/static/public";
 
   import { onMount } from "svelte";
   import { redirect } from "@sveltejs/kit";
@@ -111,7 +111,7 @@
   let scrollAbout;
   let scrollSkills;
   let scrollProjects;
-  let myUrl = `http://localhost:5173/portfolio/${data.profile.id}`
+  let myUrl = `${PUBLIC_DOMAIN_URL}/portfolio/${data.profile.id}`
   let navbar;
   let profileImage;
   let archImages = new Array(projectsData.length);
