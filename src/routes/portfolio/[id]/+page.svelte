@@ -68,8 +68,10 @@
   let skills = false;
   let projects = false;
   let toggle = false;
+  
   let profileUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutMe.profileImage}`
   let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutMe.archImg}`
+  
   let clickMenu;
   let scrollAbout;
   let scrollSkills;
@@ -83,7 +85,6 @@
   }
 
   let skillsContainer;
-  let skillsStyle;
   let skillsHeight = '0%';
 
 
