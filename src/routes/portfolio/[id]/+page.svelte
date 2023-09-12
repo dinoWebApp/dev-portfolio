@@ -69,8 +69,8 @@
   let projects = false;
   let toggle = false;
   
-  let profileUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutMe.profileImage}`
-  let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutMe.archImg}`
+  let profileUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutme.profileImage}`
+  let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutme.archImg}`
   
   let clickMenu;
   let scrollAbout;
@@ -118,16 +118,16 @@
 <div class="aboutme-1">
   <div style="height: 10px;"></div>
   <div class="profile-container">
-    {#if myData.aboutMe.profileImage}
+    {#if myData.aboutme.profileImage}
       <img src={profileUrl} alt="profile">
     {:else}
       <img src="/image/profile.png" alt="profile">
     {/if}
   </div>
   <div class="aboutMe-pr">
-    <h1>{myData.aboutMe.name}</h1>
+    <h1>{myData.aboutme.name}</h1>
     <div class="short-pr"> 
-      <p>{myData.aboutMe.shortPR}</p>
+      <p>{myData.aboutme.shortPR}</p>
     </div>
   </div>
   <div class="main-btn">
@@ -150,7 +150,7 @@
           <h2>성명</h2>
         </div>
         <div class="aboutme-text-content">
-          <p>{myData.aboutMe.name}</p>
+          <p>{myData.aboutme.name}</p>
         </div>
       </div>
     </div>
@@ -163,7 +163,7 @@
           <h2>생년월일</h2>
         </div>
         <div class="aboutme-text-content">
-          <p>{myData.aboutMe.birth}</p>
+          <p>{myData.aboutme.birth}</p>
         </div>
       </div>
     </div>
@@ -176,7 +176,7 @@
           <h2>거주지</h2>
         </div>
         <div class="aboutme-text-content">
-          <p>{myData.aboutMe.address}</p>
+          <p>{myData.aboutme.address}</p>
         </div>
       </div>
     </div>
@@ -189,7 +189,7 @@
           <h2>연락처</h2>
         </div>
         <div class="aboutme-text-content">
-          <p>{myData.aboutMe.phoneNum}</p>
+          <p>{myData.aboutme.phoneNum}</p>
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@
           <h2>이메일</h2>
         </div>
         <div class="aboutme-text-content">
-          <p>{myData.aboutMe.email}</p>
+          <p>{myData.aboutme.email}</p>
         </div>
       </div>
     </div>
@@ -215,25 +215,25 @@
           <h2>학력</h2>
         </div>
         <div class="aboutme-text-content">
-          <p>{myData.aboutMe.education}</p>
+          <p>{myData.aboutme.education}</p>
         </div>
       </div>
     </div>
 
-    {#if myData.aboutMe.awards.length !== 1 || myData.aboutMe.awards[0] !== ""
-    || myData.aboutMe.careers.length !== 1 || myData.aboutMe.careers[0] !== ""}
+    {#if myData.aboutme.awards.length !== 1 || myData.aboutme.awards[0] !== ""
+    || myData.aboutme.careers.length !== 1 || myData.aboutme.careers[0] !== ""}
       <div style="width: 100%; margin-top: 40px; margin-bottom: 40px">
         <div class="main-line"></div>
       </div>
     {/if}
 
-    {#if myData.aboutMe.awards.length !== 1 || myData.aboutMe.awards[0] !== ""}
+    {#if myData.aboutme.awards.length !== 1 || myData.aboutme.awards[0] !== ""}
       <div class="aboutme-info-etc">
         <div class="etc-title">
           <i class="fa-solid fa-trophy fa-3x"></i>
           <h1 style="margin-left: 20px;">수상 내역</h1>
         </div>
-        {#each myData.aboutMe.awards as award}
+        {#each myData.aboutme.awards as award}
           <div class="etc-contents">
             <i class="fa-solid fa-award"></i>
             <p>{award}</p>
@@ -242,13 +242,13 @@
       </div>
     {/if}
 
-    {#if myData.aboutMe.careers.length !== 1 || myData.aboutMe.careers[0] !== ""}
+    {#if myData.aboutme.careers.length !== 1 || myData.aboutme.careers[0] !== ""}
       <div class="aboutme-info-etc">
         <div class="etc-title">
           <i class="fa-regular fa-pen-to-square fa-3x"></i>
           <h1 style="margin-left: 20px;">경력 사항</h1>
         </div>
-        {#each myData.aboutMe.careers as career}
+        {#each myData.aboutme.careers as career}
           <div class="etc-contents">
             <i class="fa-solid fa-paperclip"></i>
             <p>{career}</p>

@@ -1,29 +1,35 @@
+// @ts-nocheck
 import { redirect } from '@sveltejs/kit';
 import axios from 'axios';
-import { PUBLIC_POCKETBASE_URL } from '$env/static/public';
-import { pb } from '$lib/server/pocketbase';
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
+import { verifyJWT } from '$lib/server/getToken';
+import { JWT_SECRET } from '$env/static/private';
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ locals }) {
-  if(!locals.pb.authStore.isValid) {
+export async function load({ cookies }) {
+  const myToken = cookies.get('DP_ACCESS_TOKEN') || '';
+  const decoded = verifyJWT(myToken, JWT_SECRET);
+  
+  if(!myToken) {
     throw redirect(303, '/signup');
   }
   let data = null;
   try {
     data = (await axios
-    .get(`${PUBLIC_POCKETBASE_URL}/api/collections/portfolio/records/${locals.user?.id}`,{
+    .get(`${PUBLIC_BACKEND_URL}/portfolio`,{
       headers: {
-        'Authorization': `Bearer ${locals.pb.authStore.token}`
+        'Authorization': `Bearer ${myToken}`
       }
     }))
     .data;
   } catch (error) {
     // @ts-ignore
-    console.log(error.response.status);
   };
 
   return {
-    portfolio : data
+    portfolio : data, 
+    email : decoded.email
   }
   
 }
+

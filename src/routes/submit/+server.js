@@ -1,14 +1,17 @@
-import { PUBLIC_POCKETBASE_URL } from '$env/static/public';
+// @ts-nocheck
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
+import { getToken } from '$lib/server/getToken';
 import { json, redirect } from '@sveltejs/kit';
 import axios from 'axios';
 
 /** @type {import('./$types').RequestHandler} */
-export async function POST({ request, locals }) {
+export async function POST({request, cookies }) {
+  const myToken = cookies.get('DP_ACCESS_TOKEN');
   try {
     let data = await request.json();
-    let res = await axios.post(`${PUBLIC_POCKETBASE_URL}/api/collections/portfolio/records`,data, {
+    let res = await axios.post(`${PUBLIC_BACKEND_URL}/portfolio`,data, {
       headers : {
-        'Authorization' : `Bearer ${locals.pb.authStore.token}`
+        'Authorization' : `Bearer ${myToken}`
       }
     });
     return json({message : 'ok'}, {status : 201});
@@ -18,12 +21,13 @@ export async function POST({ request, locals }) {
 }
 
 /** @type {import('./$types').RequestHandler} */
-export async function PATCH({ request, locals}) {
+export async function PATCH({ request, cookies}) {
+  const myToken = cookies.get('DP_ACCESS_TOKEN');
   try {
     let data = await request.json();
-    let res = await axios.patch(`${PUBLIC_POCKETBASE_URL}/api/collections/portfolio/records/${locals.user?.id}`,data, {
+    let res = await axios.patch(`${PUBLIC_BACKEND_URL}/portfolio`,data, {
       headers : {
-        'Authorization' : `Bearer ${locals.pb.authStore.token}`
+        'Authorization' : `Bearer ${myToken}`
       }
     });
     return json({message : 'ok'}, {status : 201});

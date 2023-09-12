@@ -6,7 +6,7 @@
 // @ts-nocheck
   import { goto } from "$app/navigation";
   import axios from "axios";
-  import { PUBLIC_IMGHOSTING_URL, PUBLIC_DOMAIN_URL } from "$env/static/public";
+  import { PUBLIC_IMGHOSTING_URL, PUBLIC_DOMAIN_URL, PUBLIC_LOCAL_URL } from "$env/static/public";
 
   import { onMount } from "svelte";
   import { redirect } from "@sveltejs/kit";
@@ -98,7 +98,7 @@
       }
     ]
   } else {
-    aboutMeData = portfolio.aboutMe;
+    aboutMeData = portfolio.aboutme;
     skillsData = portfolio.skills;
     projectsData = portfolio.projects;
   }
@@ -111,7 +111,7 @@
   let scrollAbout;
   let scrollSkills;
   let scrollProjects;
-  let myUrl = `${PUBLIC_DOMAIN_URL}/portfolio/${data.profile.id}`
+  let myUrl = `${PUBLIC_DOMAIN_URL}/portfolio/${data.email}`
   let navbar;
   let profileImage;
   let archImages = new Array(projectsData.length);
@@ -162,7 +162,7 @@
 
     let imageFiles = new FormData();
 
-    imageFiles.append('id', data.profile.id);
+    imageFiles.append('id', data.email);
     if(profileImage && profileImage.length > 0) {
       imageFiles.append('profile', profileImage[0]);
     }
@@ -219,11 +219,9 @@
     aboutMeData.profileImage = classifiedFiles.profile;
 
     let submitData = {
-      id : data.profile.id,
       aboutMe : aboutMeData,
       skills : skillsData,
       projects : projectsData,
-      email : data.profile.id
     }
     if(!portfolio) {
       axios.post('/submit', submitData)
