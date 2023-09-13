@@ -25,6 +25,11 @@
 
 <style>
 
+  :global(body) {
+    margin: 0;
+    font-family: 'Noto Sans KR','Apple SD Gothic Neo',Sans-serif;
+  }
+
   div {
     box-sizing: border-box;
   }
@@ -53,6 +58,7 @@
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;
+    color: black;
   }
 
   .signUp-btn:hover {

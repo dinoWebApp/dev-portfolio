@@ -590,6 +590,7 @@
 <style>
   :global(body) {
     margin: 0;
+    font-family: 'Noto Sans KR','Apple SD Gothic Neo',Sans-serif;
   }
 
   div {
@@ -620,7 +621,7 @@
  
 
   .menu-color {
-    color: #F4623A;
+    color: #F4623A !important;
   }
   .navbar-container {
     display: flex;
@@ -638,6 +639,7 @@
     background-color: rgba(0, 0, 0, 0);
     font-size: 16px;
     margin-left: 70px;
+    color: inherit;
   }
   .menu {
     display: flex;
@@ -659,6 +661,7 @@
     font-weight: bold;
     border: none; 
     background-color: rgba(0, 0, 0, 0);
+    color: inherit;
   }
 
   .menu button:hover {
@@ -675,6 +678,7 @@
     margin-left: 30px;
     display:block;
     margin-top: 20px;
+    color: black;
   }
 
   .m-menu button:hover {
@@ -1102,8 +1106,8 @@
       min-width: 0;
     }
     .logo {
-      margin-left: 20px;
-      font-size: 14px;
+      margin-left: 14px;
+      font-size: 12px;
     }
     .navbar {
       color: black;

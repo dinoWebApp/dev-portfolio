@@ -10,6 +10,7 @@
 
   :global(body) {
     margin: 0;
+    font-family: 'Noto Sans KR','Apple SD Gothic Neo',Sans-serif;
   }
 
  

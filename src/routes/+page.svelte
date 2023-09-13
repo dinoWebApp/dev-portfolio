@@ -249,6 +249,7 @@
 <style>
   :global(body) {
     margin: 0;
+    font-family: 'Noto Sans KR','Apple SD Gothic Neo',Sans-serif;
   }
 
   div {
@@ -287,9 +288,9 @@
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0);
     border: none;
-    color: inherit;
     margin-left: 70px;
     font-size: 16px;
+    color: inherit;
   }
   .menu {
     display: flex;
@@ -328,6 +329,7 @@
     margin-left: 30px;
     display:block;
     margin-top: 20px;
+    color: black;
   }
 
   .m-menu button:hover {
@@ -596,8 +598,8 @@
       min-width: 0;
     }
     .logo {
-      margin-left: 20px;
-      font-size: 14px;
+      margin-left: 14px;
+      font-size: 12px;
     }
     .navbar {
       color: black;
