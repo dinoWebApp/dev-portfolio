@@ -14,6 +14,8 @@
     const handleResize = ()=>{
       vh = window.innerHeight;
     }
+
+    // 스크롤 정도에 따른 메뉴 변화
     let handler = ()=>{
       if(window.scrollY === 0) {
         navbarTrans = false;
@@ -38,6 +40,7 @@
       }
     }
 
+    // 더알아보기 클릭
     clickDetail = ()=>{
       window.scrollTo({
         top: scrollService.offsetTop,
@@ -45,6 +48,7 @@
       });
     }
 
+    // 메뉴 카테코리 클릭
     clickMenu = (menu)=>{
       window.scrollTo({
         top: menu.offsetTop,
@@ -80,6 +84,8 @@
   let scrollContact;
   let navbar;
   
+
+  // 모바일 메뉴 버튼 클릭
   function clickToggle() {
     toggle = !toggle;
   }
@@ -115,6 +121,7 @@
 
 <nav class="navbar" bind:this={navbar} class:navbar-trans={navbarTrans} class:toggle={toggle}>
   <div class="navbar-container" >
+    <!-- 로고 -->
     <button class="logo" on:click={()=>{
       goto('/');
     }}>
@@ -131,6 +138,7 @@
     </div>
     <button on:click={clickToggle} class="menu-bar"><i class="fa-solid fa-bars fa-2x"></i></button>
   </div>
+  <!-- 모바일 메뉴 -->
   <div class="m-menu">
     <button class:menu-color={about} on:click={clickMenu(scrollAbout)}>About</button>
     <button class:menu-color={services} on:click={clickMenu(scrollService)}>Services</button>
@@ -141,6 +149,7 @@
   </div>
 </nav>
 
+<!-- 사이트 소개 -->
 <div class="main-banner" bind:this={scrollAbout}>
   <div class="banner-container">
     <div class="main-text">
@@ -160,6 +169,7 @@
   </div>
 </div>
 
+<!-- 서비스 내용 -->
 <div class="services" bind:this={scrollService}>
   <div class="service-container">
     <div class="service-title">
@@ -226,6 +236,8 @@
     </div>
   </div>
 </div>
+
+<!-- 문의 메일 보내기 -->
 <div class="contact-container" bind:this={scrollContact}>
   <div class="contact-title">
     <p>CONTACT US</p>

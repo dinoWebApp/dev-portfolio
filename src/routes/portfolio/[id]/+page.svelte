@@ -5,15 +5,15 @@
 <script>
   // @ts-nocheck
   import { goto } from "$app/navigation";
-  import axios from "axios";
   import { PUBLIC_IMGHOSTING_URL } from "$env/static/public";
 
   import { onMount } from "svelte";
-  import { redirect } from "@sveltejs/kit";
 
   
   
   onMount(()=>{
+
+    // 스킬 종류에 따른 화면 분배
     skillsHeight = `${100/skillsContainer.childElementCount}%`;
     
     let vh = window.innerHeight;
@@ -40,7 +40,7 @@
       }
     }
 
-
+    // 클릭한 카테고리로 스크롤 이동
     clickMenu = (menu)=>{
       window.scrollTo({
         top: menu.offsetTop,
@@ -68,18 +68,15 @@
   let skills = false;
   let projects = false;
   let toggle = false;
-  
   let profileUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutme.profileImage}`
   let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutme.archImg}`
-  
   let clickMenu;
   let scrollAbout;
   let scrollSkills;
   let scrollProjects;
-  
   let navbar;
 
-
+  // 모바일 메뉴 클릭
   function clickToggle() {
     toggle = !toggle;
   }
@@ -108,6 +105,7 @@
     </div>
     <button on:click={clickToggle} class="menu-bar"><i class="fa-solid fa-bars fa-2x"></i></button>
   </div>
+  <!-- 모바일 메뉴 -->
   <div class="m-menu">
     <button class:menu-color={aboutMe} on:click={clickMenu(scrollAbout)}>About me</button>
     <button class:menu-color={skills} on:click={clickMenu(scrollSkills)}>Skills</button>
@@ -115,6 +113,8 @@
     <button><a href='/'>Home</a></button>
   </div>
 </nav>
+
+<!-- 자기 소개 -->
 <div class="aboutme-1">
   <div style="height: 10px;"></div>
   <div class="profile-container">
@@ -135,6 +135,8 @@
   </div>
 </div>
 
+
+<!-- 개인 정보 -->
 <div class="aboutme-2" bind:this={scrollAbout}>
   <div class="title">
     <h1>ABOUT ME</h1>
@@ -220,6 +222,7 @@
       </div>
     </div>
 
+    <!-- 경력 사항, 수상 경력 유무에 따른 ui 변화 -->
     {#if myData.aboutme.awards.length !== 1 || myData.aboutme.awards[0] !== ""
     || myData.aboutme.careers.length !== 1 || myData.aboutme.careers[0] !== ""}
       <div style="width: 100%; margin-top: 40px; margin-bottom: 40px">
@@ -259,6 +262,8 @@
   </div>
 </div>
 
+
+<!-- 보유 기술 -->
 <div class="skills" bind:this={scrollSkills}>
   <div class="title">
     <h1>SKILLS</h1>
@@ -334,6 +339,8 @@
   
 </div>
 
+
+<!-- 프로젝트 목록 -->
 <div class="projects" bind:this={scrollProjects}>
   <div class="title">
     <h1>PROJECTS</h1>
@@ -355,6 +362,8 @@
           <p>README : <a href={project.readme} target="_blank">{project.readme}</a></p>
         </div>
       </div>
+
+      <!-- 프로젝트 아키텍처 이미지 -->
       <div class="project-info">
         <div class="arch-img">
           {#if myData.projects.archImg}

@@ -16,6 +16,8 @@
     const handleResize = ()=>{
       vh = window.innerHeight;
     }
+
+    // 스크롤 정도에 따른 메뉴 변화
     let handler = ()=>{
       if(window.scrollY === 0) {
         aboutMe = false;
@@ -36,7 +38,7 @@
       }
     }
 
-
+    // 클릭한 카테고리로 스크롤 이동
     clickMenu = (menu)=>{
       window.scrollTo({
         top: menu.offsetTop,
@@ -60,6 +62,8 @@
   let aboutMeData;
   let skillsData;
   let projectsData;
+
+  // 저장된 포트폴리오가 없을 시
   if(!portfolio) {
     aboutMeData = {
       name : '',
@@ -118,6 +122,7 @@
   let archImageNames = new Array(projectsData.length);
 
 
+  // 아키텍처 이미지 선택
   function selectArchImg(event, index) {
     const file = event.target.files[0];
     if (file) {
@@ -125,10 +130,12 @@
     }
   }
 
+  // 모바일 버전 메뉴 클릭
   function clickToggle() {
     toggle = !toggle;
   }
 
+  // 프로젝트 이름 중복체크
   function dupliCheck(arr) {
     const key = 'projectName';
     const uniqueValues = new Set(arr.map(item => item [key]));
@@ -139,21 +146,24 @@
     }
   }
 
+  // 이미지 파일 크기 제한
   function checkTotalFileSize(formData) {
     const maxTotalSize = 40 * 1024 * 1024; // 50MB in bytes
     let totalSize = 0;
 
-    // FormData의 각 엔트리(entry)에 대해 반복합니다.
+    // FormData의 각 엔트리(entry)에 대해 반복
     for (let entry of formData.entries()) {
         
       if (entry[1] instanceof File) {
         totalSize += entry[1].size;
       }
     }
-    // 총 파일 크기가 50MB를 초과하는지 확인합니다.
+    // 총 파일 크기가 50MB를 초과하는지 확인
     return totalSize > maxTotalSize;
   }
 
+
+  // 포트폴리오 저장
   async function submit() {
     if(dupliCheck(projectsData)) {
       alert('동일한 프로젝트명이 있습니다.');
@@ -177,6 +187,7 @@
     }
     let filesInfo = [];
     try {
+      // 이미지 호스팅 서버에 업로드
       let res = await axios.post(`${PUBLIC_IMGHOSTING_URL}/dpUpload`, imageFiles);
       filesInfo = res.data.filesInfo;
     } catch (error) {
@@ -201,7 +212,7 @@
       if (file.filename.startsWith('profile')) {
         classifiedFiles.profile = file.filename;
       } else {
-        // 'project' 다음에 오는 숫자를 파싱합니다 (e.g., 'project1' => '1')
+        // 'project' 다음에 오는 숫자를 파싱 (e.g., 'project1' => '1')
         let match = file.filename.match(/^project(\d+)/);
         if (match) {
           let projectIndex = match[1]; // 추출한 프로젝트 인덱스
@@ -274,6 +285,8 @@
     </div>
     <button on:click={clickToggle} class="menu-bar"><i class="fa-solid fa-bars fa-2x"></i></button>
   </div>
+
+  <!-- 모바일 메뉴 -->
   <div class="m-menu">
     <button class:menu-color={aboutMe} on:click={clickMenu(scrollAbout)}>About me</button>
     <button class:menu-color={skills} on:click={clickMenu(scrollSkills)}>Skills</button>
@@ -282,6 +295,8 @@
   </div>
 </nav>
 
+
+<!-- 기본 개인 정보 -->
 <div class="about-me" bind:this={scrollAbout}>
   <div class="about-me-title">
     <p>ABOUT ME</p>
@@ -304,6 +319,8 @@
         
       </div>
     </div>
+
+    <!-- 수상 내역 -->
     <div class="input-awards">
       <p style="font-size: larger; font-weight: bold;">AWARDS</p>
       {#each aboutMeData.awards as award, i (i)}
@@ -331,6 +348,8 @@
       </div>
     </div>  
 
+
+    <!-- 경력 사항 -->
     <div class="input-career">
       <p style="font-size: larger; font-weight: bold;">CAREER</p>
       {#each aboutMeData.careers as career, i (i)}
@@ -361,6 +380,8 @@
   </div>
 </div>
 
+
+<!-- 보유 기술 -->
 <div class="skills" bind:this={scrollSkills}>
   <div class="skills-title">
     <p>SKILLS</p>
@@ -373,6 +394,7 @@
         <input class="input-shape" placeholder="ex) html, css, js" bind:value={skillsData.feSkills[i]} type="text">
       {/each}
       
+      <!-- 스킬 추가 삭제 -->
       <div class="plus-minus-icons">
         <button class="minus-icon" on:click={()=>{
           if(skillsData.feSkills.length !== 1) {
@@ -400,6 +422,7 @@
         <input class="input-shape" placeholder="ex) Spring, Nest" bind:value={skillsData.beSkills[i]} type="text">
       {/each}
       
+      <!-- 스킬 추가 삭제 -->
       <div class="plus-minus-icons">
         <button class="minus-icon" on:click={()=>{
           if(skillsData.beSkills.length !== 1) {
@@ -426,7 +449,8 @@
       {#each skillsData.devOpsSkills as devopsSkill, i (i)}
         <input class="input-shape" placeholder="ex) Nginx, Tomcat" bind:value={skillsData.devOpsSkills[i]} type="text">
       {/each}
-      
+
+      <!-- 스킬 추가 삭제 -->
       <div class="plus-minus-icons">
         <button class="minus-icon" on:click={()=>{
           if(skillsData.devOpsSkills.length !== 1) {
@@ -448,12 +472,14 @@
 
       </div>
     </div>
+
+    <!-- 자격증 -->
     <div class="skills-input" style="border: none;" id="skill4">
       <p style="font-size: larger; font-weight: bold;">CERTIFICATES</p>
       {#each skillsData.certificates as certificate, i (i)}
         <input class="input-shape" placeholder="ex) 정보처리기사" bind:value={skillsData.certificates[i]} type="text">
       {/each}
-      
+      <!-- 스킬 추가 삭제 -->
       <div class="plus-minus-icons">
         <button class="minus-icon" on:click={()=>{
           if(skillsData.certificates.length !== 1) {
@@ -477,6 +503,9 @@
     </div>
   </div>
 </div>
+
+
+<!-- 프로젝트 정보 -->
 <div class="projects" bind:this={scrollProjects}>
   <div class="projects-title">
     <p>PROJECTS</p>
@@ -503,6 +532,7 @@
       <input bind:files={archImages[i]} class="input-shape" type="file" id={`architecture${i}`} name="architecture"
       accept="image/*" style="display: none;" on:change={e=> selectArchImg(e, i)}>
     </div>
+
     <div class="project-inputs" id="project2" style="position:relative; border:none;">
       {#each project.experiences as experience, i (i)}
       <textarea class="input-shape" placeholder="맡은 역할 및 문제 해결 경험" bind:value={experience} cols="30" rows="2"></textarea>
@@ -541,6 +571,8 @@
     </div>
   </div>
   {/each}
+  
+  <!-- 프로젝트 추가 -->
   <button class="circle-plus" on:click={()=>{
     if(projectsData.length === 8) {
       alert('프로젝트의 개수는 8개를 초과할 수 없습니다.')

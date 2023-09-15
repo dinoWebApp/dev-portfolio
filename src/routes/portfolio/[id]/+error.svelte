@@ -1,7 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
 </script>
-
+<!-- 포트폴리오 Not Found error 페이지 -->
 <nav class="navbar">
   <div class="navbar-container" >
     <button class="logo" on:click={()=>{

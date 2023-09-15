@@ -1,10 +1,11 @@
 // @ts-nocheck
 import { PUBLIC_BACKEND_URL } from '$env/static/public';
-import { getToken } from '$lib/server/getToken';
-import { json, redirect } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import axios from 'axios';
 
 /** @type {import('./$types').RequestHandler} */
+
+// 포트폴리오 업로드
 export async function POST({request, cookies }) {
   const myToken = cookies.get('DP_ACCESS_TOKEN');
   try {
@@ -21,6 +22,8 @@ export async function POST({request, cookies }) {
 }
 
 /** @type {import('./$types').RequestHandler} */
+
+//포트폴리오 수정
 export async function PATCH({ request, cookies}) {
   const myToken = cookies.get('DP_ACCESS_TOKEN');
   try {

@@ -3,6 +3,8 @@ import { error } from '@sveltejs/kit';
 import axios from 'axios';
 
 /** @type {import('./$types').PageServerLoad} */
+
+// 포트폴리오 불러오기
 export async function load({ params }) {
   let id = params.id;
   let publicDP = null;

@@ -8,6 +8,8 @@ export async function load({locals, url, cookies}) {
 }
 
 /** @type {import('./$types').Actions} */
+
+// OAuth API
 export const actions = {
   GoogleOAuth : async({cookies, url, locals}) =>{
     throw redirect(301, `${PUBLIC_BACKEND_URL}/auth/google`);
