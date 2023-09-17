@@ -756,7 +756,7 @@
   }
 
   .project-detail h2 {
-    margin-top: 25px;
+    margin-top: 30px;
   }
 
   .arch-img {
