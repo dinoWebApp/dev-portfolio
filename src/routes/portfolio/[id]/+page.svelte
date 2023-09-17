@@ -351,7 +351,7 @@
       <div class="project-detail">
         <h2 style="text-align: center;">{project.projectName}</h2>
         <div class="project-detail-text">
-          <p>프로젝트 소개 : {project.projectInfo}</p>
+          <p>{project.projectInfo}</p>
           <p>개발 기간 : {project.devPeriod}</p>
           <p>개발 인원 : {project.devMembers}</p>
           <p>개발 언어 : {project.devLang}</p>
@@ -771,6 +771,10 @@
     padding-left: 20px;
     padding-top: 10px;
     font-size: larger;
+  }
+
+  .project-detail-text p{
+    line-height: 1.5;
   }
 
   .project-detail-text a {
