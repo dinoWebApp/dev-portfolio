@@ -571,7 +571,7 @@
 
   .aboutme-2 {
     height: auto;
-    min-height: 796px;
+    min-height: 100vh;
     background-color: #eee;
     padding-bottom: 60px;
   }
@@ -683,12 +683,12 @@
   }
 
   .skills {
-    height: 796px;
+    height: 100vh;
   }
 
   .skills-container {
     margin-top: 20px;
-    height: 590px;
+    height: 74%;
   }
 
   .skills-detail {
@@ -757,7 +757,6 @@
 
   .arch-img {
     width: 100%;
-    max-height: 500px;
     overflow: hidden;
     border-radius: 25px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
