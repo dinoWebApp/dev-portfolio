@@ -755,6 +755,10 @@
     
   }
 
+  .project-detail h2 {
+    margin-top: 25px;
+  }
+
   .arch-img {
     width: 100%;
     overflow: hidden;
