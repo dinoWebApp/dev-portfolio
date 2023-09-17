@@ -929,7 +929,7 @@
 
   .project-container {
     width: 90%;
-    height: 74%;
+    height: 600px;
     margin: auto;
     margin-top: 80px;
     padding: 10px;
