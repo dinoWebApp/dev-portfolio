@@ -763,7 +763,7 @@
 
   .input-container {
     width: 90%;
-    height: 74%;
+    height: 600px;
     margin: auto;
     padding: 10px;
     background-color: white;
@@ -888,7 +888,7 @@
 
   .skills-container {
     width: 90%;
-    height: 74%;
+    height: 600px;
     margin: auto;
     padding: 10px;
     background-color: white;
