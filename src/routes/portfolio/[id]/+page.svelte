@@ -69,7 +69,7 @@
   let projects = false;
   let toggle = false;
   let profileUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutme.profileImage}`
-  let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=${myData.aboutme.archImg}`
+  let archUrl = `${PUBLIC_IMGHOSTING_URL}/image?filename=`;
   let clickMenu;
   let scrollAbout;
   let scrollSkills;
@@ -366,8 +366,8 @@
       <!-- 프로젝트 아키텍처 이미지 -->
       <div class="project-info">
         <div class="arch-img">
-          {#if myData.projects.archImg}
-            <img src={archUrl} alt="">
+          {#if project.archImg}
+            <img src={`${archUrl}${project.archImg}`} alt="">
           {:else}
             <img src="/image/arch-img.jpeg" alt="">
           {/if}

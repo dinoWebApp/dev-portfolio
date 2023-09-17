@@ -211,24 +211,26 @@
     filesInfo.forEach(file => {
       if (file.filename.startsWith('profile')) {
         classifiedFiles.profile = file.filename;
-      } else {
+      } 
         // 'project' 다음에 오는 숫자를 파싱 (e.g., 'project1' => '1')
-        let match = file.filename.match(/^project(\d+)/);
-        if (match) {
-          let projectIndex = match[1]; // 추출한 프로젝트 인덱스
-          classifiedFiles.projects[`project${projectIndex}`] = file.filename;
-        }
+      let match = file.filename.match(/^project(\d+)/);
+      if (match) {
+        let projectIndex = match[1]; // 추출한 프로젝트 인덱스
+        classifiedFiles.projects[`project${projectIndex}`] = file.filename;
       }
+      
     });
 
     archImages.forEach((images, index) => {
       if(classifiedFiles.projects[`project${index}`]) {
-        projectsData[index].archImage = classifiedFiles.projects[`project${index}`];
+        projectsData[index].archImg = classifiedFiles.projects[`project${index}`];
       }
       
     });
-    aboutMeData.profileImage = classifiedFiles.profile;
-
+    if(classifiedFiles.profile) {
+      aboutMeData.profileImage = classifiedFiles.profile;
+    }
+    
     let submitData = {
       aboutMe : aboutMeData,
       skills : skillsData,
