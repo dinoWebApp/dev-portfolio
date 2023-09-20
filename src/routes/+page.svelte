@@ -154,13 +154,13 @@
   <div class="banner-container">
     <div class="main-text">
       <div class="title">
-        <p>개발자들을 위한</p>
+        <p>개발자를 위한</p>
         <p>맞춤 포트폴리오 제작 사이트</p>
       </div>
       <div class="main-line"></div>
       <div class="main-detail">
         <p>막막하기만 하던 개발자 포트폴리오</p>
-        <p>쉽고 빠르게 제작해보세요</p>
+        <p>쉽고 빠르게 작성해보세요</p>
       </div>
     </div>
     <div class="main-btn">
