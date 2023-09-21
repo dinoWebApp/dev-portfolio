@@ -2,6 +2,11 @@
   <title>개발자 {myData.aboutme.name}의 포트폴리오입니다.</title>
   <meta name="keywords" content="개발자 포트폴리오 작성, 포트폴리오, 포트폴리오 템플릿, 개발자 포트폴리오, 포트폴리오 제작">
 	<meta name="description" content={myData.aboutme.shortPR}>
+  <meta property="og:url" content="https://www.dev-portfolio.kr/{myData.email}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="개발자 {myData.aboutme.name}의 포트폴리오입니다." />
+  <meta property="og:description" content={myData.aboutme.shortPR} />
+  <meta property="og:image" content="{PUBLIC_IMGHOSTING_URL}/image?filename={myData.aboutme.profileImage}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </svelte:head>
 
