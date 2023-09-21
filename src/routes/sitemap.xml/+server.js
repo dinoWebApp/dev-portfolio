@@ -1,7 +1,7 @@
 
 export async function GET() {
-  const xml = `
-    <?xml version="1.0" encoding="UTF-8"?>
+  return new Response(
+    `<?xml version="1.0" encoding="UTF-8"?>
     <urlset
           xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -16,13 +16,11 @@ export async function GET() {
     </url>
     
     
-    </urlset>
-  `;
-
-  return {
-    headers: {
-      'Content-Type': 'application/xml'
-    },
-    body: xml
-  };
+    </urlset>`.trim(),
+    {
+      headers: {
+        'Content-Type': 'application/xml'
+      }
+    }
+  );
 }
