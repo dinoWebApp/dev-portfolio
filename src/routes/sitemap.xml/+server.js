@@ -15,7 +15,7 @@ export async function GET() {
     ${userUrls.map((/** @type {any} */ url)=>`
       <url>
         <loc>${url}</loc>
-      <url>
+      </url>
     `).join("\n")}
     <url>
       <loc>https://www.dev-portfolio.kr/</loc>
