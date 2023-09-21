@@ -7,8 +7,6 @@
   <meta property="og:title" content="Dev's Portfolio: 개발자 포트폴리오 제작" />
   <meta property="og:description" content="개발자를 위한 맞춤 포트폴리오 제작 사이트입니다. 막막하기만 하던 개발자 포트폴리오, 쉽고 빠르게 작성해보세요" />
   <meta property="og:image" content="https://www.dev-portfolio.kr/favicon.jpeg" />
-  <meta property="og:image:width" content="800" />
-  <meta property="og:image:height" content="800" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </svelte:head>
 
